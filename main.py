@@ -1,4 +1,4 @@
-import blackjack
+from blackjack import Blackjack
 
 print("Blackjack".center(57))
 print("=========================================================")
@@ -19,4 +19,7 @@ Rules:
 print("=========================================================")
 
 # Start blackjack
-blackjack.Blackjack()
+blackjack = Blackjack()
+while True:
+    if not blackjack.play():
+        break
