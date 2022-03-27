@@ -39,8 +39,6 @@ class Blackjack:
         # Handle player actions:
         print(f"\nYour bet: {convert_money(self.__player.bet)}")
 
-        # Blackjack.display_hands(self, self.__player.cards, self.__dealer.cards, False)
-
     def create_player(self) -> None:
         """Receives player name and create player"""
         name = input("What's your name? \n").strip()
