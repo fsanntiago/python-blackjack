@@ -41,7 +41,7 @@ class Blackjack:
             self.__player.cards = [deck.pop(), deck.pop()]
             self.__dealer.cards = [deck.pop(), deck.pop()]
 
-            # Handle player actions:
+            # Handle player's actions:
             print(f"\nYour bet: {convert_money(self.__player.bet)}")
             while True:
                 Blackjack.display_hands(
@@ -73,7 +73,22 @@ class Blackjack:
                         # Stand/doubling down stops the player's turn.
                         break
 
-            input("\nEnter to continue")
+            # Handle the dealer's actions:
+            if self.__dealer.get_hand_value() <= 21:
+                while self.__dealer.get_hand_value() < 17:
+                    Blackjack.display_hands(
+                        self, self.__player.cards, self.__dealer.cards, True
+                    )
+                    # The dealer hits:
+                    print("Dealer hits...")
+                    self.__dealer.cards.append(deck.pop())
+                    if self.__dealer.get_hand_value() > 21:
+                        break  # The dealer has busted.
+                Blackjack.display_hands(
+                    self, self.__player.cards, self.__dealer.cards, True
+                )
+
+            input("\nPress Enter to continue...")
             print("\n")
 
     def create_player(self) -> None:
@@ -108,7 +123,7 @@ class Blackjack:
             Blackjack.display_cards(self, [Blackjack.BACKSIDE] + dealer_hand[1:])
         else:
             dealer_hand_value = self.__dealer.get_hand_value()
-            print(f"DEALER: {dealer_hand_value}")
+            print(f"\nDEALER: {dealer_hand_value}")
             Blackjack.display_cards(self, dealer_hand)
 
         # Show the player's cards:
