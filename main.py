@@ -1,9 +1,3 @@
-from blackjack import Blackjack
+import blackjack
 
-
-def main():
-    Blackjack()
-
-
-if __name__ == "__main__":
-    main()
+blackjack.Blackjack()

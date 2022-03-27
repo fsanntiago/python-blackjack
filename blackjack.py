@@ -1,5 +1,10 @@
+from player import Player
+
+
 class Blackjack:
-    def __init__(self) -> None:
+    def __init__(self, player: Player = None) -> None:
+        """Initialize Blackjack"""
+        self.__player = player
         Blackjack.play(self)
 
     def play(self):
@@ -20,3 +25,12 @@ class Blackjack:
         •The dealer stops hitting at 17."""
         )
         print("=========================================================")
+
+        Blackjack.create_player(self)
+
+    def create_player(self) -> None:
+        """Receives player name and create player"""
+        name = input("What's your name? \n").strip()
+        if not name:
+            name = "Player"
+        self.__player = Player(name.title())
