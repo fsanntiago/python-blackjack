@@ -66,6 +66,12 @@ class Blackjack:
                         self.__player.bet *= 2
                         print(f"\nBet increased to {convert_money(self.__player.bet)}")
                         print(f"Your bet: {convert_money(self.__player.bet)}")
+                    if player_action in ("H", "D"):
+                        # Hit/doubling down takes another card.
+                        self.__player.cards.append(deck.pop())
+                    if player_action in ("S", "D"):
+                        # Stand/doubling down stops the player's turn.
+                        break
 
             input("\nEnter to continue")
             print("\n")
