@@ -12,6 +12,10 @@ class Player(BasePlayer):
         self.__money = 5_000.00
         Player.greet_player(self)
 
+    @property
+    def money(self):
+        return self.__money
+
     def greet_player(self):
         print(f"\nWelcome {self.__name}, join the fun!")
         print(f"Your money: {convert_money(self.__money)}")
