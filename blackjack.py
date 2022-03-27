@@ -8,17 +8,14 @@ class Blackjack:
 
         Blackjack.create_player(self)
 
-        while Blackjack.play(self):
-            pass
-
-    def play(self):
+    def play(self) -> bool:
         if self.__player.money == 0:  # Check if the player has run out of money
             print("\nYou broke!")
             print("Good thing you weren't playing with real money.")
             print("Thanks for playing!")
             return False
         print("==============================================")
-        # Place bet
+        self.__player.place_bet()
 
     def create_player(self) -> None:
         """Receives player name and create player"""
