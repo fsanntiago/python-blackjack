@@ -88,6 +88,26 @@ class Blackjack:
                     self, self.__player.cards, self.__dealer.cards, True
                 )
 
+            # Handle whether the player won, lost, or tied:
+            player_value = self.__player.get_hand_value()
+            dealer_value = self.__dealer.get_hand_value()
+            if dealer_value > 21:
+                print("Dealer busts!")
+                print(f"You win {convert_money(self.__player.bet)}")
+                self.__player.money += self.__player.bet
+            elif dealer_value == 21:
+                print("Dealer - Blackjack!")
+                print("You lost!")
+                self.__player.money -= self.__player.bet
+            elif player_value > 21 or dealer_value > player_value:
+                print("You lost!")
+                self.__player.money -= self.__player.bet
+            elif player_value > dealer_value:
+                print(f"You won {convert_money(self.__player.bet)}")
+                self.__player.money += self.__player.bet
+            elif player_value == dealer_value:
+                print("It's a tie, the bet is returned to you.")
+
             input("\nPress Enter to continue...")
             print("\n")
 
