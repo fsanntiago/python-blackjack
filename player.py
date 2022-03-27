@@ -21,13 +21,20 @@ class Player(BasePlayer):
     def money(self):
         return self.__money
 
+    @money.setter
+    def money(self, value):
+        self.__money = value
+
     @property
     def bet(self):
         return self.__bet
 
+    @bet.setter
+    def bet(self, value):
+        self.__bet = value
+
     def greet_player(self):
         print(f"\nWelcome {self.__name}, join the fun!")
-        print(f"Your money: {convert_money(self.__money)}")
 
     def place_bet(self) -> bool:
         """
@@ -57,3 +64,22 @@ class Player(BasePlayer):
             return True
         # If player 'quit'
         return False
+
+    def getMove(self, player_hand, money):
+        """
+        Asks the player for their move, and returns 'H' for hit, 'S' for
+        stand, and 'D' for double down.
+        """
+        while True:  # Keep looping until the player enters a correct move.
+            # Determine what moves the player can make
+            moves = ["(H)it", "(S)tand"]
+
+            # Get the player's move:
+            if len(player_hand) == 2 and money > 0:
+                moves.append("(D)ouble down")
+            move_prompt = ", ".join(moves) + " > "
+            move = input(move_prompt).strip().upper()
+            if move in ("H", "S"):
+                return move
+            if move == "D":
+                return move

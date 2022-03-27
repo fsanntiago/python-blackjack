@@ -20,6 +20,4 @@ print("=========================================================")
 
 # Start blackjack
 blackjack = Blackjack()
-while True:
-    if not blackjack.play():
-        break
+blackjack.play()
