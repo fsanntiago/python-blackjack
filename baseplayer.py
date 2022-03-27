@@ -1,8 +1,4 @@
-from abc import ABC
-
-
-class BasePlayer(ABC):
+class BasePlayer(object):
     """Represent a model player(human player and "computer player"(dealer))"""
 
-    def __init__(self) -> None:
-        self.cards = []
+    __cards = []
