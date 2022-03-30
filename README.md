@@ -1,5 +1,5 @@
 # Blackjack
-🃏 A blackjack which has the same features as it normally contains
+🃏 Blackjack which has the same features as it normally contains
 
 💵 By default, the player start with $5,000.00
 ## How it work?
